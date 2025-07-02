@@ -4,4 +4,4 @@ metadata:
   name: sample-templates
 spec:
   targets:
-    - ./templates/basic-env/template.yaml
+    - https://github.com/LiamNeate/test/blob/main/template.yaml
