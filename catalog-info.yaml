@@ -1,13 +1,32 @@
-apiVersion: backstage.io/v1alpha1
-kind: Component
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
 metadata:
-  name: idp-testing
-  description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+ name: basic-env
+ title: Deploy Internal Environment
+ description: Creates a mock manifest for a dev environment
 spec:
-  type: website
-  owner: john@example.com
-  lifecycle: experimental
+ owner: team-dev
+ type: environment
+ parameters:
+   - title: Environment Settings
+     required:
+       - vmSize
+       - storage
+     properties:
+       vmSize:
+         type: string
+         title: VM Size
+         enum: [small, medium, large]
+       storage:
+         type: integer
+         title: Storage (GB)
+ steps:
+   - id: fetch-base
+     name: Generate Manifest
+     action: fetch:template
+     input:
+       url: ./skeleton
+ output:
+   links:
+     - title: View Your Manifest
+       url: ./mock-env.yaml
