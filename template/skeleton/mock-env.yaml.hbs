@@ -1,0 +1,4 @@
+# mock-env.yaml
+vmSize: {{ vmSize }}
+storage: {{ storage }}GB
+estimatedCost: £{{ (storage * 0.10) + (vmSize == "small" ? 5 : (vmSize == "medium" ? 10 : 20)) }} per month
